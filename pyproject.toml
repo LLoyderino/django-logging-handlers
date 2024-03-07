@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-logging-handlers"
-version = "0.1.0"
+version = "0.1.2"
 description = "Logging utility for Django"
 authors = ["Adrijan Bjedov <adrijan.bjedov@gmail.com>"]
 license = "MIT"
