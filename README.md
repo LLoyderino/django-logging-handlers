@@ -7,42 +7,39 @@ Django logging handlers is a collection of handlers for logging messages to vari
 
 ## Quick start
 
-1. Install via pip
+1. Install package
 
 ```bash
 pip install django-logging-handlers
 ```
 
-2. Add `django-logging-handlers` to your INSTALLED_APPS setting like this
+2. Add `django-logging-handlers` to your INSTALLED_APPS
 
 ```python
 INSTALLED_APPS = [
-    ...
-    'django_logging_handlers',
+    "django_logging_handlers",
 ]
 ```
 
-3. Register Logging
+3. Register the handlers to your logging settings
 
 ```python
 LOGGING = {
-    ...
+    "version": 1,
+    "disable_existing_loggers": False,
     "handlers": {
-        ...
         "telegram": {
             "level": "ERROR",
             "class": "django_logging_handlers.handlers.TelegramHandler",
             "token": "<telegram bot token>",
             "chat": "<chat id>",
-            "message": "",             # optional: if you want to add a message together
-                                       #           with the traceback
-            "file_name": PROJECT_NAME, # optional: if you want to edit the file name,
-                                       #           defaults to "traceback.html"
+            "message": "", # optional: additional message, blank by default
+            "file_name": "project_name", # optional: file name, defaults to "traceback.html"
         },
     },
     "loggers": {
         "django.request": {
-            "handlers": [..., "telegram"],
+            "handlers": ["telegram"],
             "level": "ERROR",
             "propagate": True,
         },
